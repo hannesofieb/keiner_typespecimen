@@ -1,0 +1,180 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: antiquewhite;
+    font-family: 'Keiner-regular';
+    /* overflow-x: hidden; */
+}
+
+.info{
+    font-size: 1.5em;
+}
+
+
+nav{
+    width: 100vw;
+    height: auto;
+}
+
+nav ol{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+li{
+    padding: 2% 5%;
+}
+
+.cover{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover h1{
+    font-family: 'Keiner-bold';
+    font-size: 20em;
+    align-self: center;
+}
+
+.about{
+    width: 100vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10%;
+    
+}
+
+.weight-styles{
+    width: 95vw;
+    height: auto;
+    padding-left: 5%;
+}
+
+.weight-styles .thin{
+    font-family: 'Keiner-thin';
+    font-size: 3em;
+}
+
+.weight-styles .extra-light{
+    font-family: 'Keiner-extraLight';
+    font-size: 4em;
+}
+
+.weight-styles .light{
+    font-family: 'Keiner-light';
+    font-size: 5em;
+}
+
+.weight-styles .regular{
+    font-family: 'Keiner-regular';
+    font-size: 6em;
+}
+
+.weight-styles .medium{
+    font-family: 'Keiner-medium';
+    font-size: 7em;
+}
+
+.weight-styles .semi-bold{
+    font-family: 'Keiner-semiBold';
+    font-size: 8em;
+}
+
+.weight-styles .bold{
+    font-family: 'Keiner-bold';
+    font-size: 9em;
+}
+
+/* ok so for the weight-styles section, this is the styling and HTML I have so far:
+.weight-styles{
+    width: 100vw;
+    height: auto;
+    line-height: normal;
+}
+
+.weight-styles .thin{
+    font-family: 'Keiner-thin';
+    font-size: 3em;
+}
+
+.weight-styles .extra-light{
+    font-family: 'Keiner-extraLight';
+    font-size: 4em;
+}
+
+.weight-styles .light{
+    font-family: 'Keiner-light';
+    font-size: 5em;
+}
+
+.weight-styles .regular{
+    font-family: 'Keiner-regular';
+    font-size: 6em;
+}
+
+.weight-styles .medium{
+    font-family: 'Keiner-medium';
+    font-size: 7em;
+}
+
+.weight-styles .semi-bold{
+    font-family: 'Keiner-semiBold';
+    font-size: 8em;
+}
+
+.weight-styles .bold{
+    font-family: 'Keiner-bold';
+    font-size: 9em;
+}
+
+<section class="weight-styles">
+        <p class="px-size"></p><p class="style-display thin">Keiner Thin</p>
+        <p class="px-size"></p><p class="style-display extra-light">Keiner Extra Light</p>
+        <p class="px-size"></p><p class="style-display light">Keiner Light</p>
+        <p class="px-size"></p><p class="style-display regular">Keiner Regular</p>
+        <p class="px-size"></p><p class="style-display medium">Keiner Medium</p>
+        <p class="px-size"></p><p class="style-display semi-bold">Keiner Semi Bold</p>
+        <p class="px-size"></p><p class="style-display bold">Keiner Bold</p>
+    </section>
+
+
+Now I want to add some js that first calculates the .px-size of the .style-display. Then I want to add some more js (and CSS?), so that when I hover over the .style-display .thin, it transitionally expands to the same size as .style-display .bold; the .style-display. .extra-light "inflates" to the same size as .style-display .semi-bold; the .style-display .light "inflates" to the same size as .style-display .medium. And when the mouse is no longer hovering over the .style-display, the .style-display "deflates" back to its original state */
+
+.language-glyphs{
+    height: 100vh;
+    margin: 5%;
+}
+
+.language-glyphs h1{
+    font-family: 'Keiner-semiBold';
+    font-size: 2em;
+}
+
+.language-tags{
+    margin: 2% 0 1% 0;
+}
+
+button{
+    margin: 0.1%;
+    border: none;
+    font-family: 'Keiner-light';
+}
+button:hover, button:focus{
+    background-color: blue;
+}
+
+
+
+.nonsense-box{
+    width: 90vw;
+    height: 50vh;
+    background-color: blue;
+}
