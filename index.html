@@ -32,8 +32,8 @@
         <p class="px-size"></p><p class="style-display bold">Keiner Bold</p>
     </section>
     <section class="language-glyphs">
-        <h1>languages and glyphs</h1>
-        <p class="info">Keiner supports 78 languages, </p>
+        <h1>Keiner says</h1>
+        <p class="info">Keiner, the german word for "no one", supports 78 languages. Playing on the notion of sentences "no one" says, click through all the languages Keiner supports and have a look at all the glyphs relevant for their language. </p>
         <section class="language-tags">
             <button class="language-tag" data-language="afrikaans">Afrikaans</button>
             <button class="language-tag" data-language="albanian">Albanian</button>
@@ -116,17 +116,36 @@
         </section>
         <section class="nonsense-box">
             <div class="gen-sentence"></div>
-            <div class="refresh"></div>
         </section>
-        <section class="glyphs">
-            <section class="all-glyphs" hidden>
+        <section class="glyphs-section">
+            <section class="glyph-menu">
+                <h1>glyphs</h1>
+                <div class="radio-inputs">
+                    <label class="radio all-glyphs-btn">
+                        <input checked name="radio" type="radio">
+                        <span class="name">see all glyphs</span>
+                    </label>
+                    <label class="radio language-active">
+                        <input type="radio" name="radio">
+                        <span class="name"></span>
+                    </label>
+                </div>
             </section>
-            <section class="language-match-glyphs"></section>
+            <section class="glyph-container">
+                <section class="all-glyphs" hidden></section>
+                <section class="language-match-glyphs"></section>
+                <section class="glyph-selected-box" hidden></section>
+            </section>
         </section>
+        
+            
+        </section>        
     </section>
 
 
 
+    <script src="https://cdn.jsdelivr.net/npm/opentype.js@latest/dist/opentype.min.js"></script>
     <script src="script.js"></script>
+
 </body>
 </html>
