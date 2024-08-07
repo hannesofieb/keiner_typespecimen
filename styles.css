@@ -4,7 +4,7 @@
     background-color: black;
     color: antiquewhite;
     font-family: 'Keiner-regular';
-    /* overflow-x: hidden; */
+    scroll-behavior: smooth;
 }
 
 .info{
@@ -53,45 +53,61 @@ li{
     
 }
 
+.display-row{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    /* width: 90vw; */
+}
+
+.display-row p:hover{
+    color: blue;
+}
+
+.display-row .px-size{
+    font-family: 'Keiner-Thin';
+    width: 5vw;
+}
+
 .weight-styles{
     width: 95vw;
-    height: auto;
+    height: 100vh;
     padding-left: 5%;
 }
 
 .weight-styles .thin{
     font-family: 'Keiner-thin';
-    font-size: 3em;
+    font-size: 2em;
 }
 
 .weight-styles .extra-light{
     font-family: 'Keiner-extraLight';
-    font-size: 4em;
+    font-size: 3em;
 }
 
 .weight-styles .light{
     font-family: 'Keiner-light';
-    font-size: 5em;
+    font-size: 4em;
 }
 
 .weight-styles .regular{
     font-family: 'Keiner-regular';
-    font-size: 6em;
+    font-size: 5em;
 }
 
 .weight-styles .medium{
     font-family: 'Keiner-medium';
-    font-size: 7em;
+    font-size: 6em;
 }
 
 .weight-styles .semi-bold{
     font-family: 'Keiner-semiBold';
-    font-size: 8em;
+    font-size: 7em;
 }
 
 .weight-styles .bold{
     font-family: 'Keiner-bold';
-    font-size: 9em;
+    font-size: 8em;
 }
 
 .weight-styles .style-display {
@@ -99,27 +115,27 @@ li{
 }
 
 .weight-styles .thin:hover {
-    font-size: 9em; /* Size of .bold */
+    font-size: 8em; /* Size of .bold */
 }
 
 .weight-styles .extra-light:hover {
-    font-size: 8em; /* Size of .semi-bold */
+    font-size: 7em; /* Size of .semi-bold */
 }
 
 .weight-styles .light:hover {
-    font-size: 7em; /* Size of .medium */
+    font-size: 6em; /* Size of .medium */
 }
 
 .weight-styles .medium:hover {
-    font-size: 5em; /* Size of .light */
+    font-size: 4em; /* Size of .light */
 }
 
 .weight-styles .semi-bold:hover {
-    font-size: 4em; /* Size of .exra-light */
+    font-size: 3em; /* Size of .exra-light */
 }
 
 .weight-styles .bold:hover {
-    font-size: 3em; /* Size of .thin */
+    font-size: 2em; /* Size of .thin */
 }
 
 .language-glyphs{
@@ -164,6 +180,7 @@ button:hover, button:focus{
 }
 
 .glyphs-section {
+    margin-top: 2%;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -172,13 +189,63 @@ button:hover, button:focus{
 .glyph-menu {
     display: flex;
     flex-direction: column;
-    border: 1px solid greenyellow;
     width: 25vw;
     flex-wrap: nowrap;
     align-items: flex-start;
 }
 
+.radio-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.radio {
+    flex: 1 1 auto;
+    text-align: center;
+    margin: 5px;
+}
+
+.radio input {
+    display: none;
+}
+
+.radio .name {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 0.5rem 0;
+    color: antiquewhite;
+    transition: all 0.15s ease-in-out;
+    width: 100%;
+}
+
+.radio input:checked + .name {
+    background-color: blue;
+    font-weight: 600;
+}
+
+.weight-buttons{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+button .wb{
+    width: 100%;
+}
+
+button .wb:hover{
+    background-color: blue;
+}
+
 .glyph-container {
+    margin-top: 2.5em;
+    margin-left: 1em;
     display: flex;
     flex-direction: row;
     width: 70vw;
@@ -203,46 +270,10 @@ button:hover, button:focus{
 
 .glyph-selected-box {
     display: none;
-    margin-top: 20px;
-    border: 1px solid #000;
-    padding: 10px;
+    padding: 10%;
 }
 
-.radio-inputs {
-    display: flex;
-    flex-wrap: wrap;
-    border-radius: 4px;
-    background-color: #eee;
-    box-sizing: border-box;
-    padding: 0.25rem;
-    width: 100%;
-    font-size: 14px;
-}
+#try{
+    height: 100vh;
 
-.radio {
-    flex: 1 1 auto;
-    text-align: center;
-    margin: 5px;
-}
-
-.radio input {
-    display: none;
-}
-
-.radio .name {
-    display: flex;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    border: none;
-    padding: 0.5rem 0;
-    color: rgba(51, 65, 85, 1);
-    transition: all 0.15s ease-in-out;
-    width: 100%;
-}
-
-.radio input:checked + .name {
-    background-color: #fff;
-    font-weight: 600;
 }

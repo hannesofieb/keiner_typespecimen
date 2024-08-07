@@ -11,8 +11,8 @@
 <body>
     <nav>
         <ol>
-            <li>try it here</li>
-            <li>more typefaces</li>
+            <li><a href="#try">try it here</a></li>
+            <li><a href="https://hanken.co/collections/all-fonts/products/keiner" target="_blank">download</a></li>
         </ol>
     </nav>
     <section class="cover">
@@ -23,13 +23,13 @@
         <p class="info">Keiner is a mono-lined, geometric sans serif with few optical corrections and hardly any stem contrasts. </p>
     </section>
     <section class="weight-styles">
-        <p class="px-size"></p><p class="style-display thin">Keiner Thin</p>
-        <p class="px-size"></p><p class="style-display extra-light">Keiner Extra Light</p>
-        <p class="px-size"></p><p class="style-display light">Keiner Light</p>
-        <p class="px-size"></p><p class="style-display regular">Keiner Regular</p>
-        <p class="px-size"></p><p class="style-display medium">Keiner Medium</p>
-        <p class="px-size"></p><p class="style-display semi-bold">Keiner Semi Bold</p>
-        <p class="px-size"></p><p class="style-display bold">Keiner Bold</p>
+        <div class="display-row"><p class="px-size"></p><p class="style-display thin">Keiner Thin</p></div>
+        <div class="display-row"><p class="px-size"></p><p class="style-display extra-light">Keiner Extra Light</p></div>
+        <div class="display-row"><p class="px-size"></p><p class="style-display light">Keiner Light</p></div>
+        <div class="display-row"><p class="px-size"></p><p class="style-display regular">Keiner Regular</p></div>
+        <div class="display-row"><p class="px-size"></p><p class="style-display medium">Keiner Medium</p></div>
+        <div class="display-row"><p class="px-size"></p><p class="style-display semi-bold">Keiner Semi Bold</p></div>
+        <div class="display-row"><p class="px-size"></p><p class="style-display bold">Keiner Bold</p></div>
     </section>
     <section class="language-glyphs">
         <h1>Keiner says</h1>
@@ -123,25 +123,38 @@
                 <div class="radio-inputs">
                     <label class="radio all-glyphs-btn">
                         <input checked name="radio" type="radio">
-                        <span class="name">see all glyphs</span>
+                        <span class="name">See all glyphs</span>
                     </label>
                     <label class="radio language-active">
                         <input type="radio" name="radio">
                         <span class="name"></span>
                     </label>
                 </div>
+                <p class="all-glyph-info">In total, there are 390+ glyphs in the Keiner typeface. </p>
+                <p class="lang-glyph-info" hidden>In total, there are ___ glyphs that Keiner supports for the _____ language</p>
             </section>
             <section class="glyph-container">
-                <section class="all-glyphs" hidden></section>
+                <div class="weight-buttons">
+                    <button class="wb">Thin</button>
+                    <button class="wb">Extra Light</button>
+                    <button class="wb">Light</button>
+                    <button class="wb">Regular</button>
+                    <button class="wb">Medium</button>
+                    <button class="wb">SemiBold</button>
+                    <button class="wb">Bold</button>
+                </div>
+                <section class="all-glyphs"></section>
                 <section class="language-match-glyphs"></section>
                 <section class="glyph-selected-box" hidden></section>
             </section>
         </section>
-        
-            
-        </section>        
-    </section>
+    </section>        
+    <section id="try">
 
+    </section>
+    <footer>
+
+    </footer>
 
 
     <script src="https://cdn.jsdelivr.net/npm/opentype.js@latest/dist/opentype.min.js"></script>
