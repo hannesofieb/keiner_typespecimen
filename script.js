@@ -29,7 +29,7 @@ document.addEventListener('mousemove', function(event) {
     const maxFontSize = 30; // Maximum font size in em
     const fontSize = minFontSize + (maxFontSize - minFontSize) * (1 - percentageY);
 
-    const h1Element = document.querySelector('.cover h1');
+    const h1Element = document.querySelector('#cover h1');
     h1Element.style.fontFamily = fontFamily;
     h1Element.style.fontSize = fontSize + 'em';
 });

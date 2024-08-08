@@ -28,7 +28,7 @@ li{
     list-style: none;
 }
 
-.cover{
+#cover{
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -37,7 +37,7 @@ li{
     align-items: center;
 }
 
-.cover h1{
+#cover h1{
     font-family: 'Keiner-bold';
     font-size: 20em;
     align-self: center;
@@ -66,7 +66,7 @@ li{
 
 .display-row .px-size{
     font-family: 'Keiner-Thin';
-    width: 5vw;
+    width: 4vw;
 }
 
 .weight-styles{
@@ -139,7 +139,7 @@ li{
 }
 
 .language-glyphs{
-    height: 100vh;
+    height: auto;
     margin: 5%;
 }
 
@@ -180,10 +180,11 @@ button:hover, button:focus{
 }
 
 .glyphs-section {
-    margin-top: 2%;
+    margin: 2% 0;
     display: flex;
     flex-direction: row;
     width: 100%;
+    height: auto;
 }
 
 .glyph-menu {
@@ -274,6 +275,75 @@ button .wb:hover{
 }
 
 #try{
-    height: 100vh;
+    height: auto;
 
 }
+
+
+footer, .files{
+    display: flex;
+    flex-direction: column;
+    margin: 5vh 2em 2em 2em;
+}
+
+.footer-info, .footer-links{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 3vh 5vw;
+    align-items: baseline;
+
+}
+
+.hanken-des-info, .keiner-info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.hanken-des-info{
+    width: 35vw;
+    margin-right: 5%;
+    font-size: 0.75em;
+}
+
+.filetypes{
+    margin-top: 0.5em;
+    display: flex;
+    flex-direction: row;
+}
+
+.filetypes em{
+    margin-right: 1em;
+}
+
+.hanken-des-info .link-btn{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2em;
+    justify-content: space-between;
+
+}
+
+.soMe{
+    display: flex;
+    flex-direction: row;
+
+}
+ .soMe div{
+    margin-right: 2em;
+ }
+
+ #download-btn{
+    font-family: 'Keiner-semiBold';
+    font-size: 10.5em;
+    border-radius: 50%;
+    border: 20px solid blue;
+    text-align: center;
+ }
+
+ #download-btn:hover{
+    background-color: blue;
+
+ }
