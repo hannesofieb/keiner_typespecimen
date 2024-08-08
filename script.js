@@ -36,6 +36,24 @@ document.addEventListener('mousemove', function(event) {
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    const styleDisplays = document.querySelectorAll('.style-display');
+
+    styleDisplays.forEach(display => {
+        const pxSizeElement = display.previousElementSibling;
+
+        // Function to update font size dynamically
+        const updateFontSize = () => {
+            const computedFontSize = getComputedStyle(display).fontSize;
+            pxSizeElement.textContent = parseInt(computedFontSize) + 'px'; // Round and remove decimals
+            requestAnimationFrame(updateFontSize); // Continuously update
+        };
+
+        // Initial call to start the continuous update
+        requestAnimationFrame(updateFontSize);
+    });
+});
+
 document.addEventListener("DOMContentLoaded", function() {
     const languageSentences = {
         "afrikaans": "Die hond dra 'n hoed met 'n sambreel.",
@@ -120,39 +138,32 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const buttons = document.querySelectorAll(".language-tag");
     const genSentenceDiv = document.querySelector(".gen-sentence");
+    let lockedSentence = ""; // Store the locked-in sentence
 
     buttons.forEach(button => {
-        button.addEventListener("click", function() {
+        button.addEventListener("mouseover", function() {
             const language = this.getAttribute("data-language");
             const sentence = languageSentences[language];
             if (sentence) {
-                genSentenceDiv.textContent = sentence;
-                genSentenceDiv.style.display = "inline";
+                genSentenceDiv.textContent = sentence; // Show sentence on hover
             }
+        });
+
+        button.addEventListener("mouseout", function() {
+            if (lockedSentence) {
+                genSentenceDiv.textContent = lockedSentence; // Revert to locked sentence when not hovering
+            } else {
+                genSentenceDiv.textContent = "";
+            }
+        });
+
+        button.addEventListener("click", function() {
+            const language = this.getAttribute("data-language");
+            lockedSentence = languageSentences[language]; // Lock in the sentence on click
+            genSentenceDiv.textContent = lockedSentence;
         });
     });
 });
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const styleDisplays = document.querySelectorAll('.style-display');
-
-    styleDisplays.forEach(display => {
-        const pxSizeElement = display.previousElementSibling;
-
-        // Function to update font size dynamically
-        const updateFontSize = () => {
-            const computedFontSize = getComputedStyle(display).fontSize;
-            pxSizeElement.textContent = parseInt(computedFontSize) + 'px'; // Round and remove decimals
-            requestAnimationFrame(updateFontSize); // Continuously update
-        };
-
-        // Initial call to start the continuous update
-        requestAnimationFrame(updateFontSize);
-    });
-});
-
 
 
 const fontPaths = {
@@ -351,5 +362,82 @@ document.addEventListener('click', function(event) {
         glyphElement.textContent = event.target.textContent;
         glyphElement.classList.add('glyph');
         selectedBox.appendChild(glyphElement);
+    }
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const tryStyles = document.querySelectorAll('.try-styles');
+
+    tryStyles.forEach(style => {
+        const labelBar = style.querySelector('.label-bar');
+        const editInput = style.querySelector('.edit-input');
+        const fontWeightDisplay = style.querySelector('.font-weight');
+        const pixelSizeDisplay = style.querySelector('.pixel-size');
+        const textInput = style.querySelector('.text-input input') || style.querySelector('.body-style input');
+
+        const weightSlider = editInput.querySelector('.weight');
+        const sizeSlider = editInput.querySelector('.size');
+        const leadingSlider = editInput.querySelector('.leading');
+
+        // Show edit-input on hover
+        labelBar.addEventListener('mouseover', () => {
+            editInput.hidden = false;
+        });
+
+        labelBar.addEventListener('mouseout', () => {
+            editInput.hidden = true;
+        });
+
+        // Update text properties
+        weightSlider.addEventListener('input', () => {
+            const weight = weightSlider.value;
+            textInput.style.fontFamily = getFontFamily(weight);
+            fontWeightDisplay.textContent = getFontWeightName(weight);
+        });
+
+        sizeSlider.addEventListener('input', () => {
+            const size = sizeSlider.value + 'px';
+            textInput.style.fontSize = size;
+            pixelSizeDisplay.textContent = size;
+        });
+
+        leadingSlider.addEventListener('input', () => {
+            const leading = leadingSlider.value;
+            textInput.style.lineHeight = leading;
+        });
+
+        // Initialize displays
+        fontWeightDisplay.textContent = getFontWeightName(weightSlider.value);
+        pixelSizeDisplay.textContent = sizeSlider.value + 'px';
+    });
+
+    // Function to return the name of the font weight based on the value
+    function getFontWeightName(weight) {
+        switch (parseInt(weight, 10)) {
+            case 100: return 'Thin';
+            case 200: return 'ExtraLight';
+            case 300: return 'Light';
+            case 400: return 'Regular';
+            case 500: return 'Medium';
+            case 600: return 'SemiBold';
+            case 700: return 'Bold';
+            default: return 'Regular';
+        }
+    }
+
+    // Function to return the font-family based on the weight value
+    function getFontFamily(weight) {
+        switch (parseInt(weight, 10)) {
+            case 100: return 'Keiner-thin';
+            case 200: return 'Keiner-extraLight';
+            case 300: return 'Keiner-light';
+            case 400: return 'Keiner-regular';
+            case 500: return 'Keiner-medium';
+            case 600: return 'Keiner-semiBold';
+            case 700: return 'Keiner-bold';
+            default: return 'Keiner-regular';
+        }
     }
 });
