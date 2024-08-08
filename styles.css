@@ -163,19 +163,36 @@ p a:hover{
     font-size: 2em; /* Size of .thin */
 }
 
+
 .language-glyphs{
     height: auto;
     margin: 5%;
+    display: flex;
+    flex-direction: column;
 }
 
-.language-glyphs h1{
-    font-family: 'Keiner-semiBold';
-    font-size: 2em;
+.language-info{
+    margin: 5% 0;
 }
-
-.language-tags{
+.interaction{
+    display: flex;
+    flex-direction: row;
     margin: 2% 0 1% 0;
 }
+
+
+.language-tags{
+    /* width: 45vw; */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 1%;
+}
+
+.language-tag{
+    padding: 0.5%
+}
+
 
 button{
     margin: 0.1%;
@@ -188,20 +205,20 @@ button:hover, button:focus{
 }
 
 .nonsense-box{
-    width: 90vw;
+    width: 100%;
     height: 50vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: blue;
-
+    border-radius: 15px;
 }
 
 .gen-sentence{
     background-color: blue;
     color: antiquewhite;
-    font-size: 2em;
+    font-size: 3em;
 }
 
 .glyphs-section {
@@ -220,11 +237,18 @@ button:hover, button:focus{
     align-items: flex-start;
 }
 .window{
-    width: 100%;
-    height: 25%;
-    margin: 4% 0;
-    background-color: blue;
+    width: 25vw;
+    height: auto;
+    padding-bottom: 5%;
+    /* margin: 5vh 0; */
+    /* background-color: rgba(0, 0, 255, 0.1); */
+    background-color: antiquewhite;
+    color: black;
+    border-radius: 15px;
     position: sticky;
+    top: 20px;
+    font-size: 20em;
+    text-align: center;
 }
 
 .weight-buttons{
@@ -233,23 +257,41 @@ button:hover, button:focus{
     flex-direction: row;
     justify-content: space-between;
     font-size: 3em;
+    color: antiquewhite;
+    border-radius: 2px;
 }
 
-button .wb{
+.wb{
     width: 200px;
+    padding: 0.5em 1em;
+    background-color: transparent;
+    border: 2px solid transparent;
+    border-radius: 2px;
 }
 
-button .wb:hover{
-    background-color: blue;
+.wb:focus, .wb:hover{
+    background-color: antiquewhite;
+    color: black;
+    border: 2px solid antiquewhite;
+    border-radius: 2px;
 }
+
+
 
 .glyph-container {
     margin-left: 1em;
     display: flex;
     flex-direction: row;
-    width: 70vw;
+    width: 65vw;
     flex-wrap: wrap;
     justify-content: flex-start;
+}
+
+.all-glyphs{
+    background-color: antiquewhite;
+    border: 2px solid antiquewhite;
+    /* padding: 1em; */
+    width: 64vw;
 }
 
 .glyph {
@@ -258,7 +300,8 @@ button .wb:hover{
     font-size: 3em;
     text-align: center;
     border: 1px solid #ddd;
-    width: 5vw;
+    width: 1em;
+    padding: 0.1em 0.25em;
 }
 
 .glyph:hover {

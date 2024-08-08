@@ -153,169 +153,203 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-const fontPath = 'Keiner/Keiner-Regular.woff';
 
-opentype.load(fontPath, function(err, font) {
-    if (err) {
-        console.error('Font could not be loaded: ' + err);
-        return;
-    }
 
-    const allGlyphsSection = document.querySelector('.all-glyphs');
-    const glyphs = font.glyphs.glyphs;
+const fontPaths = {
+    'Keiner-Thin': 'Keiner/Keiner-Thin.woff',
+    'Keiner-ExtraLight': 'Keiner/Keiner-ExtraLight.woff',
+    'Keiner-Light': 'Keiner/Keiner-Light.woff',
+    'Keiner-Regular': 'Keiner/Keiner-Regular.woff',
+    'Keiner-Medium': 'Keiner/Keiner-Medium.woff',
+    'Keiner-SemiBold': 'Keiner/Keiner-SemiBold.woff',
+    'Keiner-Bold': 'Keiner/Keiner-Bold.woff'
+};
 
-    // Arrays to store categorized glyphs
-    const upperCaseGlyphs = [];
-    const lowerCaseGlyphs = [];
-    const numberGlyphs = [];
-    const diacriticUpperCaseGlyphs = [];
-    const diacriticLowerCaseGlyphs = [];
-    const punctuationGlyphs = [];
-    const symbolGlyphs = [];
-    const greekGlyphs = [];
+let activeFont = 'Keiner-Regular'; // Default font to be displayed
 
-    // Regular expressions for categorization
-    const upperCaseRegex = /^[A-Z]$/;
-    const lowerCaseRegex = /^[a-z]$/;
-    const numberRegex = /^[0-9]$/;
-    const diacriticUpperCaseRegex = /^[À-ÞĀ-Ŋ]$/;
-    const diacriticLowerCaseRegex = /^[ß-ÿā-ŋ]$/;
-    const punctuationRegex = /^[!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~–—‘’‚“”„†‡•…‰‹›⁄¡¢£¤¥¦§¨©ª«¬­®¯°±´µ¶·¸º»¼½¾¿]$/;
-    const symbolRegex = /^[^\w\s]$/;
-    const greekRegex = /^[μπ]$/;
+const allGlyphsSection = document.querySelector('.all-glyphs');
+const selectedBox = document.querySelector('.glyph-selected-box');
+const windowElement = document.querySelector('.window');
 
-    // Categorize glyphs
-    for (let key in glyphs) {
-        const glyph = glyphs[key];
-        if (glyph.unicode !== undefined) {
-            const char = String.fromCharCode(glyph.unicode);
-            if (upperCaseRegex.test(char)) {
-                upperCaseGlyphs.push(glyph);
-            } else if (lowerCaseRegex.test(char)) {
-                lowerCaseGlyphs.push(glyph);
-            } else if (numberRegex.test(char)) {
-                numberGlyphs.push(glyph);
-            } else if (diacriticUpperCaseRegex.test(char)) {
-                diacriticUpperCaseGlyphs.push(glyph);
-            } else if (diacriticLowerCaseRegex.test(char)) {
-                diacriticLowerCaseGlyphs.push(glyph);
-            } else if (punctuationRegex.test(char)) {
-                punctuationGlyphs.push(glyph);
-            } else if (symbolRegex.test(char)) {
-                symbolGlyphs.push(glyph);
-            } else if (greekRegex.test(char)) {
-                greekGlyphs.push(glyph);
-            }
-        }
-    }
+// Load and display default font glyphs
+loadAndDisplayFontGlyphs(activeFont);
 
-    // Function to sort glyphs by Unicode value
-    const sortGlyphsByUnicode = (glyphs) => {
-        return glyphs.sort((a, b) => a.unicode - b.unicode);
-    };
+document.querySelectorAll('.wb').forEach(button => {
+    // Handle click event
+    button.addEventListener('click', function() {
+        activeFont = this.dataset.font; // Update active font on click
+        loadAndDisplayFontGlyphs(activeFont);
+        updateButtonFocus();
+    });
 
-    // Sort each category
-    const sortedUpperCaseGlyphs = sortGlyphsByUnicode(upperCaseGlyphs);
-    const sortedLowerCaseGlyphs = sortGlyphsByUnicode(lowerCaseGlyphs);
-    const sortedNumberGlyphs = sortGlyphsByUnicode(numberGlyphs);
-    const sortedDiacriticUpperCaseGlyphs = sortGlyphsByUnicode(diacriticUpperCaseGlyphs);
-    const sortedDiacriticLowerCaseGlyphs = sortGlyphsByUnicode(diacriticLowerCaseGlyphs);
-    const sortedPunctuationGlyphs = sortGlyphsByUnicode(punctuationGlyphs);
-    const sortedSymbolGlyphs = sortGlyphsByUnicode(symbolGlyphs);
-    const sortedGreekGlyphs = sortGlyphsByUnicode(greekGlyphs);
+    // Handle mouseover event
+    button.addEventListener('mouseover', function() {
+        loadAndDisplayFontGlyphs(this.dataset.font);
+    });
 
-    // Combine sorted categories
-    const sortedGlyphList = [
-        ...sortedUpperCaseGlyphs,
-        ...sortedLowerCaseGlyphs,
-        ...sortedNumberGlyphs,
-        ...sortedDiacriticUpperCaseGlyphs,
-        ...sortedDiacriticLowerCaseGlyphs,
-        ...sortedPunctuationGlyphs,
-        ...sortedSymbolGlyphs,
-        ...sortedGreekGlyphs
-    ];
-
-    // Clear previous content in .all-glyphs section
-    allGlyphsSection.innerHTML = '';
-
-    // Create and append sorted glyph elements
-    sortedGlyphList.forEach(function(glyph) {
-        const glyphElement = document.createElement('div');
-        glyphElement.textContent = String.fromCharCode(glyph.unicode);
-        glyphElement.classList.add('glyph');
-        allGlyphsSection.appendChild(glyphElement);
+    // Handle mouseout event
+    button.addEventListener('mouseout', function() {
+        loadAndDisplayFontGlyphs(activeFont); // Revert to active font when not hovering
     });
 });
 
-document.querySelector('.all-glyphs-btn').addEventListener('click', function() {
-    document.querySelector('.all-glyphs').hidden = false;
-    document.querySelector('.language-match-glyphs').hidden = true;
-});
+function updateButtonFocus() {
+    document.querySelectorAll('.wb').forEach(btn => {
+        btn.classList.remove('active'); // Remove active class from all buttons
+        if (btn.dataset.font === activeFont) {
+            btn.classList.add('active'); // Add active class to the clicked button
+        }
+    });
+}
 
+function loadAndDisplayFontGlyphs(fontKey) {
+    const fontPath = fontPaths[fontKey];
+
+    opentype.load(fontPath, function(err, font) {
+        if (err) {
+            console.error('Font could not be loaded: ' + err);
+            return;
+        }
+
+        const glyphs = font.glyphs.glyphs;
+        allGlyphsSection.innerHTML = ''; // Clear previous content
+
+        glyphs.forEach(glyph => {
+            if (glyph.unicode) {
+                const glyphElement = document.createElement('div');
+                glyphElement.textContent = String.fromCharCode(glyph.unicode);
+                glyphElement.classList.add('glyph');
+                glyphElement.style.fontFamily = fontKey; // Set the font-family according to the selected weight
+                allGlyphsSection.appendChild(glyphElement);
+
+                // Add hover event to display glyph in .window section
+                glyphElement.addEventListener('mouseover', function() {
+                    windowElement.textContent = this.textContent;
+                    windowElement.style.fontFamily = fontKey;
+                });
+            }
+        });
+    });
+}
+
+function loadAndDisplayFontGlyphs(fontKey) {
+    const fontPath = fontPaths[fontKey];
+
+    opentype.load(fontPath, function(err, font) {
+        if (err) {
+            console.error('Font could not be loaded: ' + err);
+            return;
+        }
+
+        const glyphs = font.glyphs.glyphs;
+
+        // Arrays to store categorized glyphs
+        const upperCaseGlyphs = [];
+        const lowerCaseGlyphs = [];
+        const numberGlyphs = [];
+        const diacriticUpperCaseGlyphs = [];
+        const diacriticLowerCaseGlyphs = [];
+        const punctuationGlyphs = [];
+        const symbolGlyphs = [];
+        const greekGlyphs = [];
+        const mathSymbolsGlyphs = [];
+
+        // Regular expressions for categorization
+        const upperCaseRegex = /^[A-Z]$/;
+        const lowerCaseRegex = /^[a-z]$/;
+        const numberRegex = /^[0-9]$/;
+        const diacriticUpperCaseRegex = /^[À-ÞĀ-Ŋ]$/;
+        const diacriticLowerCaseRegex = /^[ß-ÿā-ŋ]$/;
+        const punctuationRegex = /^[!"#$%&'()*+,\-./:;<=>?@[\\\]^_`{|}~–—‘’‚“”„†‡•…‰‹›⁄¡¢£¤¥¦§¨©ª«¬­®¯°±´µ¶·¸º»¼½¾¿]$/;
+        const symbolRegex = /^[^\w\s]$/;
+        const greekRegex = /^[μπ]$/;
+        const mathSymbolsRegex = /^[×÷∂∅∏∑−√∞∫≈≠≤≥◊]$/;
+
+        // Categorize glyphs
+        for (let key in glyphs) {
+            const glyph = glyphs[key];
+            if (glyph.unicode !== undefined) {
+                const char = String.fromCharCode(glyph.unicode);
+                if (upperCaseRegex.test(char)) {
+                    upperCaseGlyphs.push(glyph);
+                } else if (lowerCaseRegex.test(char)) {
+                    lowerCaseGlyphs.push(glyph);
+                } else if (numberRegex.test(char)) {
+                    numberGlyphs.push(glyph);
+                } else if (diacriticUpperCaseRegex.test(char)) {
+                    diacriticUpperCaseGlyphs.push(glyph);
+                } else if (diacriticLowerCaseRegex.test(char)) {
+                    diacriticLowerCaseGlyphs.push(glyph);
+                } else if (punctuationRegex.test(char)) {
+                    punctuationGlyphs.push(glyph);
+                } else if (mathSymbolsRegex.test(char)) {
+                    mathSymbolsGlyphs.push(glyph);
+                } else if (symbolRegex.test(char)) {
+                    symbolGlyphs.push(glyph);
+                } else if (greekRegex.test(char)) {
+                    greekGlyphs.push(glyph);
+                }
+            }
+        }
+
+        // Function to sort glyphs by Unicode value
+        const sortGlyphsByUnicode = (glyphs) => {
+            return glyphs.sort((a, b) => a.unicode - b.unicode);
+        };
+
+        // Sort each category
+        const sortedUpperCaseGlyphs = sortGlyphsByUnicode(upperCaseGlyphs);
+        const sortedLowerCaseGlyphs = sortGlyphsByUnicode(lowerCaseGlyphs);
+        const sortedNumberGlyphs = sortGlyphsByUnicode(numberGlyphs);
+        const sortedDiacriticUpperCaseGlyphs = sortGlyphsByUnicode(diacriticUpperCaseGlyphs);
+        const sortedDiacriticLowerCaseGlyphs = sortGlyphsByUnicode(diacriticLowerCaseGlyphs);
+        const sortedPunctuationGlyphs = sortGlyphsByUnicode(punctuationGlyphs);
+        const sortedSymbolGlyphs = sortGlyphsByUnicode(symbolGlyphs);
+        const sortedGreekGlyphs = sortGlyphsByUnicode(greekGlyphs);
+        const sortedMathSymbolsGlyphs = sortGlyphsByUnicode(mathSymbolsGlyphs);
+
+        // Combine sorted categories
+        const sortedGlyphList = [
+            ...sortedUpperCaseGlyphs,
+            ...sortedLowerCaseGlyphs,
+            ...sortedDiacriticUpperCaseGlyphs,
+            ...sortedDiacriticLowerCaseGlyphs,
+            ...sortedNumberGlyphs,
+            ...sortedPunctuationGlyphs,
+            ...sortedSymbolGlyphs,
+            ...sortedGreekGlyphs,
+            ...sortedMathSymbolsGlyphs
+        ];
+
+        // Clear previous content in .all-glyphs section
+        allGlyphsSection.innerHTML = '';
+
+        // Create and append sorted glyph elements
+        sortedGlyphList.forEach(function(glyph) {
+            const glyphElement = document.createElement('div');
+            glyphElement.textContent = String.fromCharCode(glyph.unicode);
+            glyphElement.classList.add('glyph');
+            glyphElement.style.fontFamily = fontKey; // Apply the font-family style
+            allGlyphsSection.appendChild(glyphElement);
+
+            // Add hover event to display glyph in .window section
+            glyphElement.addEventListener('mouseover', function() {
+                windowElement.textContent = this.textContent;
+                windowElement.style.fontFamily = fontKey;
+            });
+        });
+    });
+}
 
 // Handle glyph selection
 document.addEventListener('click', function(event) {
     if (event.target.classList.contains('glyph')) {
-        const selectedBox = document.querySelector('.glyph-selected-box');
         selectedBox.innerHTML = ''; // Clear previous content
         selectedBox.hidden = false;
 
         const glyphElement = document.createElement('div');
         glyphElement.textContent = event.target.textContent;
+        glyphElement.classList.add('glyph');
         selectedBox.appendChild(glyphElement);
     }
 });
-
-// When language-button is clicked, that same value will appear in the glyph-language radio button
-document.querySelectorAll('.language-tag').forEach(button => {
-    button.addEventListener('click', function() {
-        const language = this.textContent;
-        document.querySelector('.language-active span').textContent = language;
-    });
-});
-
-// Assuming opentype.js is already loaded and the font is loaded as per your initial setup
-
-opentype.load(fontPath, function(err, font) {
-    if (err) {
-        console.error('Font could not be loaded: ' + err);
-        return;
-    }
-
-    // Define language to glyph mapping (simplified example)
-    const languageGlyphs = {
-        Afrikaans: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞĀāĂăĄąĆćĊċČčĎďĐđĒēĖėĘęĚěĞğĠġĢģĦħĪīĮįİıĲĶķĹĺĻļĽľŁłŃńŅņŇňŊßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿŋ",
-        Albanian: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÇË",
-        // Add entries for all other languages
-    };
-
-    const allGlyphsSection = document.querySelector('.all-glyphs');
-    const languageMatchGlyphsSection = document.querySelector('.language-match-glyphs');
-
-    document.querySelector('.all-glyphs-btn').addEventListener('click', function() {
-        allGlyphsSection.hidden = false;
-        languageMatchGlyphsSection.hidden = true;
-    });
-
-    document.querySelector('.language-active').addEventListener('click', function() {
-        const selectedLanguage = document.querySelector('.language-active .name').textContent;
-        const glyphsToDisplay = languageGlyphs[selectedLanguage];
-        if (glyphsToDisplay) {
-            updateGlyphDisplay(glyphsToDisplay);
-            allGlyphsSection.hidden = true;
-            languageMatchGlyphsSection.hidden = false;
-        }
-    });
-
-    function updateGlyphDisplay(glyphs) {
-        languageMatchGlyphsSection.innerHTML = ''; // Clear previous glyphs
-        glyphs.split('').forEach(glyph => {
-            const glyphElement = document.createElement('div');
-            glyphElement.textContent = glyph;
-            glyphElement.classList.add('glyph');
-            languageMatchGlyphsSection.appendChild(glyphElement);
-        });
-    }
-});
-
