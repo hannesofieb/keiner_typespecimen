@@ -375,7 +375,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const editInput = style.querySelector('.edit-input');
         const fontWeightDisplay = style.querySelector('.font-weight');
         const pixelSizeDisplay = style.querySelector('.pixel-size');
-        const textInput = style.querySelector('.text-input input') || style.querySelector('.body-style input');
+        const textInput = style.querySelector('.text-input') || style.querySelector('.body-style');
 
         const weightSlider = editInput.querySelector('.weight');
         const sizeSlider = editInput.querySelector('.size');
@@ -383,11 +383,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Show edit-input on hover
         labelBar.addEventListener('mouseover', () => {
-            editInput.hidden = false;
+            editInput.style.display = 'flex';
         });
 
         labelBar.addEventListener('mouseout', () => {
-            editInput.hidden = true;
+            editInput.style.display = 'none';
         });
 
         // Update text properties
@@ -413,21 +413,7 @@ document.addEventListener("DOMContentLoaded", function() {
         pixelSizeDisplay.textContent = sizeSlider.value + 'px';
     });
 
-    // Function to return the name of the font weight based on the value
-    function getFontWeightName(weight) {
-        switch (parseInt(weight, 10)) {
-            case 100: return 'Thin';
-            case 200: return 'ExtraLight';
-            case 300: return 'Light';
-            case 400: return 'Regular';
-            case 500: return 'Medium';
-            case 600: return 'SemiBold';
-            case 700: return 'Bold';
-            default: return 'Regular';
-        }
-    }
-
-    // Function to return the font-family based on the weight value
+    // Function to map weight values to font-family names
     function getFontFamily(weight) {
         switch (parseInt(weight, 10)) {
             case 100: return 'Keiner-thin';
@@ -438,6 +424,20 @@ document.addEventListener("DOMContentLoaded", function() {
             case 600: return 'Keiner-semiBold';
             case 700: return 'Keiner-bold';
             default: return 'Keiner-regular';
+        }
+    }
+
+    // Function to map weight values to readable names
+    function getFontWeightName(weight) {
+        switch (parseInt(weight, 10)) {
+            case 100: return 'Thin';
+            case 200: return 'ExtraLight';
+            case 300: return 'Light';
+            case 400: return 'Regular';
+            case 500: return 'Medium';
+            case 600: return 'SemiBold';
+            case 700: return 'Bold';
+            default: return 'Regular';
         }
     }
 });

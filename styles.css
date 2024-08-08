@@ -317,9 +317,10 @@ button:hover, button:focus{
 }
 
 
-/* #try, .try-styles {
-    height: 70vh;
-    width: 90vw;
+
+#try, .try-styles {
+    height: auto;
+    width: auto;
     margin: 2vw;
     display: flex;
     flex-direction: column;
@@ -334,63 +335,8 @@ button:hover, button:focus{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-}
-
-.label-visible {
-    width: 30%;
-    display: flex;
-    flex-direction: row;
-    font-family: 'Keiner-light';
-    font-size: 14px;
-}
-
-.label-visible p{
-    margin-right: 3%;
-}
-
-.edit-input {
-    display: none;
-    flex: 1;
-    justify-content: space-around;
-    margin-left: 10px;
-}
-
-.label-bar:hover .edit-input {
-    display: flex;
-}
-
-.text-input input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 5px;
-}
-
-.body-style input{
-
-}
-
-.heading-style input {
-    font-family: 'Keiner-bold';
-    font-size: 36px;
-}
-
-.subheading-style input {
-    font-family: 'Keiner-semiBold';
-    font-size: 24px;
-} */
-
-#try, .try-styles {
-    margin: 2vw;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-
-.label-bar, .label-visible, .edit-input, .sliding-bars {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+    background-color: antiquewhite;
+    color: black;
 }
 
 .label-visible {
@@ -403,6 +349,8 @@ button:hover, button:focus{
 
 .label-visible p {
     margin-right: 3%;
+    background-color: antiquewhite;
+    color: black;
 }
 
 .edit-input {
@@ -412,48 +360,44 @@ button:hover, button:focus{
     margin-left: 10px;
 }
 
-.label-bar:hover .edit-input {
+/* .label-bar:hover .edit-input {
     display: flex;
-}
+} */
 
-.text-input input {
+.text-input, .body-style {
     width: 100%;
     box-sizing: border-box;
     padding: 5px;
     white-space: pre-wrap; /* Ensures text breaks to new lines */
+    background-color: antiquewhite;
+    color: black;
 }
 
-.body-style input {
-    column-count: 3;
-    column-gap: 20px;
-}
-
-.heading-style input {
+.heading-style {
     font-family: 'Keiner-bold';
     font-size: 36px;
 }
 
-.subheading-style input {
+.subheading-style {
     font-family: 'Keiner-semiBold';
     font-size: 24px;
 }
 
-.body-style input {
-    font-family: 'Keiner-regular';
-    font-size: 16px;
-}
-
-#try {
-    overflow: auto;
-}
-
-
-.body-style input {
+.body-style {
     font-family: 'Keiner-regular';
     font-size: 16px;
     column-count: 3;
     column-gap: 20px;
 }
+
+#try {
+    overflow: auto;
+    margin-bottom: 20vh;
+    border-radius: 15px;
+    background-color: antiquewhite;
+    color: black;
+}
+
 
 
 footer, .files{
@@ -514,12 +458,14 @@ footer, .files{
  #download-btn{
     font-family: 'Keiner-semiBold';
     font-size: 10.5em;
-    border-radius: 50%;
-    border: 20px solid blue;
+    /* border-radius: 50%; */
+    /* border: 20px solid blue; */
+    border: transparent;
     text-align: center;
  }
 
  #download-btn:hover{
+    border-radius: 50%;
     background-color: blue;
 
  }
