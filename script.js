@@ -1,38 +1,60 @@
 const buttons = document.querySelectorAll('.language-button');
 const genSentence = document.querySelector('.gen-sentence');
 
-document.addEventListener('mousemove', function(event) {
-    const x = event.clientX;
-    const y = event.clientY;
-    const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-
-    const percentageX = x / vw;
-    const percentageY = y / vh;
-
-    let fontFamily;
-    if (percentageX <= 0.2) {
-        fontFamily = 'Keiner-thin';
-    } else if (percentageX <= 0.4) {
-        fontFamily = 'Keiner-extraLight';
-    } else if (percentageX <= 0.5) {
-        fontFamily = 'Keiner-light';
-    } else if (percentageX <= 0.6) {
-        fontFamily = 'Keiner-regular';
-    } else if (percentageX <= 0.8) {
-        fontFamily = 'Keiner-semiBold';
-    } else {
-        fontFamily = 'Keiner-bold';
-    }
-
-    const minFontSize = 10; // Minimum font size in em
-    const maxFontSize = 30; // Maximum font size in em
-    const fontSize = minFontSize + (maxFontSize - minFontSize) * (1 - percentageY);
-
+document.addEventListener('DOMContentLoaded', function() {
     const h1Element = document.querySelector('#cover h1');
-    h1Element.style.fontFamily = fontFamily;
-    h1Element.style.fontSize = fontSize + 'em';
+    const recogStyleElement = document.querySelector('.recog-style');
+
+    document.addEventListener('mousemove', function(event) {
+        const x = event.clientX;
+        const y = event.clientY;
+        const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        const vh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+
+        const percentageX = x / vw;
+        const percentageY = y / vh;
+
+        let fontFamily;
+        if (percentageX <= 0.2) {
+            fontFamily = 'Keiner-thin';
+        } else if (percentageX <= 0.4) {
+            fontFamily = 'Keiner-extraLight';
+        } else if (percentageX <= 0.5) {
+            fontFamily = 'Keiner-light';
+        } else if (percentageX <= 0.6) {
+            fontFamily = 'Keiner-regular';
+        } else if (percentageX <= 0.8) {
+            fontFamily = 'Keiner-semiBold';
+        } else {
+            fontFamily = 'Keiner-bold';
+        }
+
+        const minFontSize = 10; // Minimum font size in em
+        const maxFontSize = 30; // Maximum font size in em
+        const fontSize = minFontSize + (maxFontSize - minFontSize) * (1 - percentageY);
+
+        h1Element.style.fontFamily = fontFamily;
+        h1Element.style.fontSize = fontSize + 'em';
+
+        // Update recog-style content
+        recogStyleElement.textContent = getFontWeightName(fontFamily);
+    });
+
+    // Function to map font-family to readable names
+    function getFontWeightName(fontFamily) {
+        switch (fontFamily) {
+            case 'Keiner-thin': return 'Keiner Thin';
+            case 'Keiner-extraLight': return 'Keiner ExtraLight';
+            case 'Keiner-light': return 'Keiner Light';
+            case 'Keiner-regular': return 'Keiner Regular';
+            case 'Keiner-medium': return 'Keiner Medium';
+            case 'Keiner-semiBold': return 'Keiner SemiBold';
+            case 'Keiner-bold': return 'Keiner Bold';
+            default: return 'Keiner Regular';
+        }
+    }
 });
+
 
 
 

@@ -29,7 +29,7 @@ li{
 }
 
 a{
-    border: 3px solid blue;
+    background-color: blue;
     border-radius: 50%;
     text-decoration: none;
     text-transform: uppercase;
@@ -40,6 +40,7 @@ a{
 
 a:hover{
     background-color: blue;
+    border: 3px solid blue;
     border-radius: 50%;
 }
 
@@ -47,13 +48,15 @@ p a{
     text-transform: capitalize;
     font-size: 1em;
     border: none;
+    background-color: transparent;
 }
 p a:hover{
     color: blue;
     background-color: transparent;
+    border: transparent;
 }
 
-#cover{
+#cover {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -61,6 +64,17 @@ p a:hover{
     justify-content: center;
     align-items: center;
 }
+
+.sub-keiner {
+    display: flex;
+    flex-direction: row;
+}
+
+.recog-style {
+    margin-right: 10px;
+    font-family: 'Keiner-extraLight';
+}
+
 
 #cover h1{
     font-family: 'Keiner-bold';
@@ -335,8 +349,6 @@ button:hover, button:focus{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    background-color: antiquewhite;
-    color: black;
 }
 
 .label-visible {
@@ -349,8 +361,7 @@ button:hover, button:focus{
 
 .label-visible p {
     margin-right: 3%;
-    background-color: antiquewhite;
-    color: black;
+
 }
 
 .edit-input {
@@ -369,8 +380,6 @@ button:hover, button:focus{
     box-sizing: border-box;
     padding: 5px;
     white-space: pre-wrap; /* Ensures text breaks to new lines */
-    background-color: antiquewhite;
-    color: black;
 }
 
 .heading-style {
@@ -394,8 +403,6 @@ button:hover, button:focus{
     overflow: auto;
     margin-bottom: 20vh;
     border-radius: 15px;
-    background-color: antiquewhite;
-    color: black;
 }
 
 
