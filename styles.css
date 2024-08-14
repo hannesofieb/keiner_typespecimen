@@ -84,35 +84,39 @@ p a:hover{
 }
 
 .about{
-    width: 100vw;
+    width: 90vw;
     height: 40vh;
+    margin: 5% 5% 0 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 10%;
-    
+    text-align: center;
+}
+
+
+.weight-styles{
+    width: 95vw;
+    height: 100vh;
+    padding-left: 5%;
+    margin: 10% 0;
+
 }
 
 .display-row{
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    /* width: 90vw; */
-}
-
-.display-row p:hover{
-    color: blue;
 }
 
 .display-row .px-size{
     font-family: 'Keiner-Thin';
-    width: 4vw;
+    width: 2.5vw;
+    margin-right: 1.5vw;
 }
 
-.weight-styles{
-    width: 95vw;
-    height: 100vh;
-    padding-left: 5%;
+.display-row:hover .px-size {
+    background-color: blue;
+    border-radius: 50%;
 }
 
 .weight-styles .thin{
@@ -188,52 +192,67 @@ p a:hover{
 
 .language-info{
     margin: 5% 0;
+    display: flex;
+    align-items: stretch;
 }
 .interaction{
     display: flex;
     flex-direction: row;
-    margin: 2% 0 1% 0;
 }
-
 
 .language-tags{
-    /* width: 45vw; */
+    width: 35vw;
+    height: 60vh;
+    padding: 1%;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
-    margin-top: 1%;
+    flex-direction: column;
+    /* border-radius: 15px 0 0 15px; */
+    /* border: 3px solid #dbcebd; */
+    /* background-color:#dbcebd; */
 }
-
-.language-tag{
-    padding: 0.5%
-}
-
 
 button{
     margin: 0.1%;
     border: none;
     font-family: 'Keiner-light';
+    width: auto;
 }
 button:hover, button:focus{
     background-color: blue;
-    border-radius: 50%;
+    border-radius: 7px;
+    border: transparent;
 }
 
+.language-tag{
+    padding: 0.5%;
+    margin-right: 5%;
+    text-align: left;
+    /* border: 3px solid #dbcebd;
+    background-color:#dbcebd;
+    color: blue; */
+}
+
+
 .nonsense-box{
-    width: 100%;
-    height: 50vh;
+    width: 55vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* background-color: antiquewhite; */
     background-color: blue;
     border-radius: 15px;
+    /* border: 3px solid antiquewhite; */
+
 }
 
 .gen-sentence{
     background-color: blue;
     color: antiquewhite;
     font-size: 3em;
+    text-align: center;
+    padding: 5%;
 }
 
 .glyphs-section {
@@ -253,7 +272,7 @@ button:hover, button:focus{
 }
 .window{
     width: 25vw;
-    height: auto;
+    height: 50vh;
     padding-bottom: 5%;
     /* margin: 5vh 0; */
     /* background-color: rgba(0, 0, 255, 0.1); */
@@ -294,7 +313,6 @@ button:hover, button:focus{
 }
 
 
-
 .glyph-container {
     margin-left: 1em;
     display: flex;
@@ -305,10 +323,12 @@ button:hover, button:focus{
 }
 
 .all-glyphs{
-    /* background-color: antiquewhite; */
-    border: 3px solid #faebd7;
-    /* padding: 1em; */
+    display: flex;
+    background-color: antiquewhite;
+    border: 1px solid #faebd7;
     width: 64vw;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .glyph {
@@ -332,24 +352,55 @@ button:hover, button:focus{
 }
 
 
-
+/* #try styles */
 #try, .try-styles {
     height: auto;
     width: auto;
-    margin: 2vw;
     display: flex;
     flex-direction: column;
     overflow: hidden;
 }
 
-.try-styles {
-    margin-bottom: 10px;
+#try {
+    overflow: auto;
+    margin-bottom: 20vh;
+    margin: 10% 5%;
 }
 
-.label-bar, .label-visible, .edit-input, .sliding-bars {
+.try-styles {
+    margin-bottom: 5%;
+}
+
+.label-bar, .label-visible, .edit-input{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
+    color: blue;
+    text-transform: uppercase;
+}
+
+.edit-sliders{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.edit-sliders label{
+    margin-right: 5%;
+}
+
+.label-bar{
+    margin: 0 0 10px 10px;
+  }
+
+.edit-input {
+    display: none; /* Hide the sliders initially */
+    flex: 1;
+    justify-content: space-around;
+    font-size: 12px;
 }
 
 .label-visible {
@@ -357,40 +408,63 @@ button:hover, button:focus{
     display: flex;
     flex-direction: row;
     font-family: 'Keiner-light';
-    font-size: 14px;
 }
 
 .label-visible p {
     margin-right: 3%;
-
+    text-transform: uppercase;
+    font-size: 12px;
 }
 
-.edit-input {
-    display: none;
-    flex: 1;
-    justify-content: space-around;
-    margin-left: 10px;
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 3px;
+    background: antiquewhite;
+    outline: none;
+    opacity: 0.99;
+    transition: opacity .2s;
 }
 
-/* .label-bar:hover .edit-input {
-    display: flex;
-} */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%; 
+    background: black;
+    border: 2px solid antiquewhite;
+    cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb:hover{
+    background: antiquewhite;
+}
+.try-styles:hover .edit-input {
+    display: flex; /* Show the sliders when hovering over .try-styles */
+}
 
 .text-input, .body-style {
     width: 100%;
     box-sizing: border-box;
     padding: 5px;
     white-space: pre-wrap; /* Ensures text breaks to new lines */
+    outline: none;
+}
+
+.text-input:hover{
+    cursor: text;
 }
 
 .heading-style {
     font-family: 'Keiner-bold';
-    font-size: 36px;
+    font-size: 68px;
 }
 
 .subheading-style {
     font-family: 'Keiner-semiBold';
-    font-size: 24px;
+    font-size: 34px;
 }
 
 .body-style {
@@ -400,14 +474,7 @@ button:hover, button:focus{
     column-gap: 20px;
 }
 
-#try {
-    overflow: auto;
-    margin-bottom: 20vh;
-    border-radius: 15px;
-}
-
-
-
+/* footer styles  */
 footer, .files{
     display: flex;
     flex-direction: column;
@@ -418,7 +485,7 @@ footer, .files{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 3vh 5vw;
+    padding: 3vh 5vw 0 5vw;
     align-items: baseline;
 
 }
@@ -486,14 +553,14 @@ footer, .files{
  #download-btn{
     font-family: 'Keiner-semiBold';
     font-size: 10.5em;
-    /* border-radius: 50%; */
-    /* border: 20px solid blue; */
-    border: transparent;
     text-align: center;
  }
 
- #download-btn:hover{
-    border-radius: 50%;
-    background-color: blue;
-
+ .credits{
+    width: 100vw;
+    padding: 0 0 2% 7%;
+    color: antiquewhite;
+    /* font-family: 'Keiner-Light'; */
+    font-size: small;
+    text-transform: uppercase;
  }

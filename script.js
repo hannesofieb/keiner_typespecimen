@@ -56,8 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const styleDisplays = document.querySelectorAll('.style-display');
 
@@ -75,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(updateFontSize);
     });
 });
+
 
 document.addEventListener("DOMContentLoaded", function() {
     const languageSentences = {
@@ -209,7 +208,7 @@ loadAndDisplayFontGlyphs(activeFont);
 
 document.querySelectorAll('.wb').forEach(button => {
     // Handle click event
-    button.addEventListener('click', function() {
+    button.addEventListener('click', function() {        
         activeFont = this.dataset.font; // Update active font on click
         loadAndDisplayFontGlyphs(activeFont);
         updateButtonFocus();
@@ -387,8 +386,6 @@ document.addEventListener('click', function(event) {
     }
 });
 
-
-
 document.addEventListener("DOMContentLoaded", function() {
     const tryStyles = document.querySelectorAll('.try-styles');
 
@@ -405,11 +402,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Show edit-input on hover
         labelBar.addEventListener('mouseover', () => {
-            editInput.style.display = 'flex';
+            tryStyles.style.display = 'flex';
         });
 
         labelBar.addEventListener('mouseout', () => {
-            editInput.style.display = 'none';
+            tryStyles.style.display = 'none';
         });
 
         // Update text properties

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="fonts.css">
 
     <title>Keiner</title>
+    <link rel="icon" type="image/x-icon" href="img/keiner-icon.svg">
+
 </head>
 <body>
     <nav>
@@ -39,9 +41,12 @@
         <div class="display-row"><p class="px-size"></p><p class="style-display bold">Keiner Bold</p></div>
     </section>
 
+    <section class="about">
+        <p class="info">Keiner, the german word for "no one", supports 78 languages. Playing on the notion of sentences "no one" says, click through all the languages Keiner supports and have a look at all the glyphs relevant for their language. </p>
+    </section>
+
     <section class="language-glyphs">
         <section class="language-info">
-            <p class="info">Keiner, the german word for "no one", supports 78 languages. Playing on the notion of sentences "no one" says, click through all the languages Keiner supports and have a look at all the glyphs relevant for their language. </p>
             <section class="language-tags">
                 <button class="language-tag" data-language="afrikaans">Afrikaans</button>
                 <button class="language-tag" data-language="albanian">Albanian</button>
@@ -123,7 +128,6 @@
                 <button class="language-tag" data-language="zulu">Zulu</button>
             </section>
             <div class="interaction">
-               
                 <section class="nonsense-box">
                     <div class="gen-sentence"></div>
                 </section>
@@ -143,11 +147,11 @@
                     <button class="wb" data-font="Keiner-Regular">Regular</button>
                     <button class="wb" data-font="Keiner-Medium">Medium</button>
                     <button class="wb" data-font="Keiner-SemiBold">SemiBold</button>
-                    <button class="wb" data-font="Keiner-Bold">Bold</button>
+                    <button class="wb last" data-font="Keiner-Bold">Bold</button>
                 </div>
                 <section class="all-glyphs"></section>
-                <section class="glyph-selected-box" hidden></section>
             </section>
+            
         </section>
         <br><br><br><hr>
     </section>  
@@ -163,15 +167,15 @@
                 <div class="edit-input" hidden>
                     <div class="edit-sliders">
                         <label>Size</label>
-                        <input type="range" class="size" min="10" max="100" step="1" value="36">
+                        <input type="range" class="size slider" min="10" max="100" step="1" value="36">
                     </div>
                     <div class="edit-sliders">
                         <label>Weight</label>
-                        <input type="range" class="weight" min="100" max="700" step="100" value="700">
+                        <input type="range" class="weight slider" min="100" max="700" step="100" value="700">
                     </div>
                     <div class="edit-sliders">
                         <label>Leading</label>
-                        <input type="range" class="leading" min="1" max="3" step="0.1" value="1.5">
+                        <input type="range" class="leading slider" min="1" max="3" step="0.1" value="1.5">
                     </div>
                 </div>
             </section>
@@ -186,15 +190,15 @@
                 <div class="edit-input" hidden>
                     <div class="edit-sliders">
                         <label>Size</label>
-                        <input type="range" class="size" min="10" max="100" step="1" value="24">
+                        <input type="range" class="size slider" min="10" max="100" step="1" value="24">
                     </div>
                     <div class="edit-sliders">
                         <label>Weight</label>
-                        <input type="range" class="weight" min="100" max="700" step="100" value="600">
+                        <input type="range" class="weight slider" min="100" max="700" step="100" value="600">
                     </div>
                     <div class="edit-sliders">
                         <label>Leading</label>
-                        <input type="range" class="leading" min="1" max="3" step="0.1" value="1.5">
+                        <input type="range" class="leading slider" min="1" max="3" step="0.1" value="1.5">
                     </div>
                 </div>
             </section>
@@ -209,15 +213,15 @@
                 <div class="edit-input" hidden>
                     <div class="edit-sliders">
                         <label>Size</label>
-                        <input type="range" class="size" min="10" max="100" step="1" value="16">
+                        <input type="range" class="size slider" min="10" max="100" step="1" value="16">
                     </div>
                     <div class="edit-sliders">
                         <label>Weight</label>
-                        <input type="range" class="weight" min="100" max="700" step="100" value="400">
+                        <input type="range" class="weight slider" min="100" max="700" step="100" value="400">
                     </div>
                     <div class="edit-sliders">
                         <label>Leading</label>
-                        <input type="range" class="leading" min="1" max="3" step="0.1" value="1.5">
+                        <input type="range" class="leading slider" min="1" max="3" step="0.1" value="1.5">
                     </div>
                 </div>
             </section>
@@ -231,7 +235,7 @@
         <section class="footer-info">
             <section class="hanken-des-info">
                 <p class="info">Hanken Design Co.® is a digital design company that provides high-quality fonts and other digital assets. Our mission is to offer functional and visually appealing design solutions.</p>
-                <button class="link-btn second-footer"><a href="https://hanken.co/collections/all-fonts" target="_blank">MORE TYPEFACES</a></button>
+                <a class="link-btn second-footer" href="https://hanken.co/collections/all-fonts" target="_blank">MORE TYPEFACES</a>
             </section>
             <section class="keiner-info">
                 <p class="info">Keiner is designed by <a href="https://www.behance.net/pradil" target="_blank">Alfredo Marco Pradil</a> for Hanken Design Co. typefoundry. It is a geometrical sans serif and includes over 390 glyphs across the 7 different styles.</p>
@@ -246,9 +250,10 @@
                 <div><a href="https://www.instagram.com/hankendesign/" target="_blank" title="@hankendesign"><img src="img/ig.svg" alt="instagram"></a></div>
                 <div><a href="https://www.facebook.com/hankendesign/" target="_blank" title="Hanken Design Co."><img src="img/fb.svg" alt="facebook"></a></div>
             </section>
-            <button class="link-btn files"><a href="#cover">BACK UP^</a></button>
+            <a class="link-btn files" href="#cover">BACK UP^</a>
         </section>
     </footer>
+    <p class="credits">*This type specimen for the Keiner™ typeface was designed and developed by Hanne Sofie Berg</p>
 
 
     <script src="https://cdn.jsdelivr.net/npm/opentype.js@latest/dist/opentype.min.js"></script>
