@@ -55,6 +55,30 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const infoElements = document.querySelectorAll('.about .info span');
+
+    function fadeInOnScroll() {
+        const triggerHeight = window.innerHeight * 0.8; // 80% of the viewport height
+
+        infoElements.forEach((element, index) => {
+            const rect = element.getBoundingClientRect();
+            const lineOffset = rect.top - triggerHeight;
+            
+            // Calculate the delay based on the element's position
+            const delay = index * 50; // Adjust the multiplier for speed
+
+            if (rect.top < triggerHeight) {
+                setTimeout(() => {
+                    element.style.opacity = 1;
+                }, delay);
+            }
+        });
+    }
+
+    window.addEventListener('scroll', fadeInOnScroll);
+    fadeInOnScroll(); // Trigger the function on page load in case the elements are already in view
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     const styleDisplays = document.querySelectorAll('.style-display');

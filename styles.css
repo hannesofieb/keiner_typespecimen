@@ -5,9 +5,23 @@
     color: antiquewhite;
     font-family: 'Keiner-regular';
     scroll-behavior: smooth;
+    /* overflow-x: hidden; */
 }
 
-.info{
+.about .info span{
+    font-size: 2em;
+    line-height: 2em;
+    opacity: 0.1; /* Start with low opacity */
+    transform: translateX(-20px); /* Start with a slight offset to the left */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.about .info.in-view {
+    opacity: 1; /* Fade to full opacity */
+    transform: translateX(0); /* Move to the original position */
+}
+
+footer .info{
     font-size: 1.5em;
 }
 
@@ -85,8 +99,8 @@ p a:hover{
 
 .about{
     width: 90vw;
-    height: 40vh;
-    margin: 5% 5% 0 5%;
+    height: auto;
+    margin: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -256,7 +270,7 @@ button:hover, button:focus{
 }
 
 .glyphs-section {
-    margin: 2% 0;
+    margin: 10% 0;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -557,7 +571,7 @@ footer, .files{
  }
 
  .credits{
-    width: 100vw;
+    width: auto;
     padding: 0 0 2% 7%;
     color: antiquewhite;
     /* font-family: 'Keiner-Light'; */
